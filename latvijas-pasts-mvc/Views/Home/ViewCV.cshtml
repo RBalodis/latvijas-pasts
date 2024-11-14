@@ -1,0 +1,188 @@
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model latvijas_pasts_mvc.Models.BaseData
+
+@{
+    ViewData["Title"] = "View and Edit CV";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>View and edit the details of the CV here</p>
+
+<form id="cvForm" method="post" action="@Url.Action("ViewCV", "Home")">
+    <div>
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" readonly />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" readonly />
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" readonly />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Phone" class="control-label"></label>
+        <input asp-for="Phone" class="form-control" readonly />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    
+    <h4>Location Info</h4>
+    <div>
+        <label asp-for="Country" class="control-label"></label>
+        <input asp-for="Country" class="form-control" readonly />
+        <span asp-validation-for="Country" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="City" class="control-label"></label>
+        <input asp-for="City" class="form-control" readonly />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="PostalCode" class="control-label"></label>
+        <input asp-for="PostalCode" class="form-control" readonly />
+        <span asp-validation-for="PostalCode" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="Street" class="control-label"></label>
+        <input asp-for="Street" class="form-control" readonly />
+        <span asp-validation-for="Street" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="StreetNumber" class="control-label"></label>
+        <input asp-for="StreetNumber" class="form-control" readonly />
+        <span asp-validation-for="StreetNumber" class="text-danger"></span>
+    </div>
+    
+    <h4>Education Info</h4>
+    <div>
+        <label asp-for="InstitutionName" class="control-label"></label>
+        <input asp-for="InstitutionName" class="form-control" readonly />
+        <span asp-validation-for="InstitutionName" class="text-danger"></span>
+    </div>
+
+    <div>
+        <label asp-for="EducationArea" class="control-label"></label>
+        <select asp-for="EducationArea" asp-items="Html.GetEnumSelectList<BaseData.AreaOfEducation>()" class="form-control" disabled></select>
+        <span asp-validation-for="EducationArea" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="EducationLevel" class="control-label"></label>
+        <select asp-for="EducationLevel" asp-items="Html.GetEnumSelectList<BaseData.LevelOfEducation>()" class="form-control" disabled></select>
+        <span asp-validation-for="EducationLevel" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="EducationStatus" class="control-label"></label>
+        <select asp-for="EducationStatus" asp-items="Html.GetEnumSelectList<BaseData.StudyStatus>()" class="form-control" disabled></select>
+        <span asp-validation-for="EducationStatus" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="TimeSpent" class="control-label"></label>
+        <input asp-for="TimeSpent" class="form-control" readonly />
+        <span asp-validation-for="TimeSpent" class="text-danger"></span>
+    </div>
+
+    <h4>Previous Job(s) Info</h4>
+    <div>
+        <label asp-for="JobTitle" class="control-label"></label>
+        <input asp-for="JobTitle" class="form-control" readonly />
+        <span asp-validation-for="JobTitle" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="JobDescription" class="control-label"></label>
+        <input asp-for="JobDescription" class="form-control" readonly />
+        <span asp-validation-for="JobDescription" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="StartDate" class="control-label"></label>
+        <input asp-for="StartDate" class="form-control" readonly type="date" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="EndDate" class="control-label"></label>
+        <input asp-for="EndDate" class="form-control" readonly type="date" />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="JobCategory" class="control-label"></label>
+        <input asp-for="JobCategory" class="form-control" readonly />
+        <span asp-validation-for="JobCategory" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="JobAchievements" class="control-label"></label>
+        <input asp-for="JobAchievements" class="form-control" readonly />
+        <span asp-validation-for="JobAchievements" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="JobSkills" class="control-label"></label>
+        <input asp-for="JobSkills" class="form-control" readonly />
+        <span asp-validation-for="JobSkills" class="text-danger"></span>
+    </div>
+    
+    <div>
+        <label asp-for="JobAdditionalInformation" class="control-label"></label>
+        <input asp-for="JobAdditionalInformation" class="form-control" readonly />
+        <span asp-validation-for="JobAdditionalInformation" class="text-danger"></span>
+    </div>
+
+    <hr />
+    
+    <!-- Edit and Delete Buttons -->
+    <button type="button" id="editButton" class="btn btn-primary" onclick="toggleEdit()">Edit</button>
+    <button type="submit" id="saveButton" class="btn btn-success" style="display: none;">Save</button>
+    <button type="button" id="deleteButton" class="btn btn-danger" onclick="confirmDelete()">Delete</button>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    function toggleEdit() {
+        var inputs = document.querySelectorAll('input, select');
+        inputs.forEach(function(input) {
+            if (input.type === "date") {
+                input.removeAttribute('readonly');
+                input.disabled = false;
+            } else if (input.tagName.toLowerCase() === "select") {
+                input.disabled = false;
+            } else {
+                input.readOnly = false;
+            }
+        });
+
+        document.getElementById('editButton').style.display = 'none';
+        document.getElementById('saveButton').style.display = 'inline-block';
+    }
+    
+    function confirmDelete() {
+        if (confirm('Are you sure you want to delete this CV?')) {
+            document.getElementById('cvForm').action = '@Url.Action("Delete", "Home")';
+            document.getElementById('cvForm').submit();
+        }
+    }
+</script>

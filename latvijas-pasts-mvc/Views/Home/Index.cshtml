@@ -1,0 +1,25 @@
+﻿@using Microsoft.IdentityModel.Tokens
+@model List<BaseData>
+@{
+    ViewData["Title"] = "List of saved CV's";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <ul>
+        @if (Model.IsNullOrEmpty())
+        {
+            <h1>No cv's in database</h1>
+            return;
+        }
+        @foreach (var item in Model)
+        {
+            <li>
+                <p>@item.FirstName</p>
+                <p>@item.LastName</p>
+
+                <a href="@Url.Action("ViewCV", "Home", new { id = item.Id })" class="btn btn-primary">View</a>
+            </li>
+        }
+    </ul>
+</div>
